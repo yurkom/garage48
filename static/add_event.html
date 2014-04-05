@@ -1,0 +1,82 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="css/datepicker.css" rel="stylesheet">
+	<link href="css/sticky-footer.css" rel="stylesheet">
+    <title>Create Event</title>
+
+    
+    <link href="css/bootstrap.min.css" rel="stylesheet">    
+	<style media="screen" type="text/css">
+		.wrapper {
+			padding-left: 15px;
+			padding-right: 15px;
+		}
+	</style>  
+  </head>
+
+  <body>
+	<div class="wrapper">
+		<div class="container">
+		  <div class="page-header">
+			<h1>Create Event</h1>
+		  </div>		
+		  
+			<form class="form-inline" role="form">			
+					<h3>Event details</h3>
+					<div class="form-group">						
+						<p><input type="text" class="form-control" id="place" placeholder="Place"></p>						
+						<p><input type="text" class="form-control" id="password" placeholder="Password"></p>
+						<p><input type="text" class="form-control datepicker" id="Date" placeholder="Date"></p>
+						<b>Kind of sport:</b>
+						<select class="form-control">
+							<option value="football">Football</option>
+							<option value="basketball">Basketball</option>		
+							<option value="fitness">Fitness</option>	
+						</select>	
+						<p></p>
+						<b>Skill level:</b>
+						<select class="form-control">
+							<option value="football">Beginner</option>
+							<option value="basketball">Middle</option>		
+							<option value="fitness">Expert</option>	
+						</select>	
+						<p></p>
+						<textarea class="form-control" id="TextArea" placeholder="Description"></textarea>
+						<p></p>
+						<input class="btn btn-danger" type="submit" value="Create Event">
+						<form method="post">
+							<input type="button" value="Close" class="btn btn-default" id="close-bnt"/>
+						</form>
+					</div>
+					
+			</form>		
+		</div>
+	</div>
+	
+	
+	
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+	<script src="js/jQuery.js"></script>
+	<script src="js/bootstrap.js"></script>
+	<script src="js/datepicker.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('.datepicker').datepicker();
+			$('#close-bnt').click(function(){
+				window.open('', '_self', ''); //bug fix
+				window.close();
+			});			
+		});	  	  
+    </script>
+    <!-- Placed at the end of the document so the pages load faster -->
+  </body>
+</html>

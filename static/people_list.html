@@ -1,0 +1,64 @@
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+   
+	<link href="css/sticky-footer.css" rel="stylesheet">
+    <title>People list</title>
+
+    
+    <link href="css/bootstrap.min.css" rel="stylesheet">    
+	<style media="screen" type="text/css">
+		.wrapper {
+			padding-left: 15px;
+			padding-right: 15px;
+		}
+	</style>  
+  </head>
+
+  <body>
+	<div class="wrapper">
+		<div class="container">
+		  	<h1>People list on event</h1>
+		  
+			<form class="form-inline" role="form">
+				
+				<table class="table" id="personTable">
+					 <tr>
+						<th>Name</th>
+						<th><span class="glyphicon glyphicon-envelope"></span></th>										
+					 </tr>					 
+				</table>
+				
+				<form method="post">
+					<input type="button" value="Close" class="btn btn-default" id="close-bnt"/>
+				</form>
+			</form>		
+		</div>
+	</div>
+	
+	
+	
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+	<script src="js/jQuery.js"></script>
+	<script src="js/bootstrap.js"></script>
+	<script src="js/parser.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {			
+			$('#close-bnt').click(function(){
+				window.open('', '_self', ''); //bug fix
+				window.close();
+			});
+			parser.createRowPeople('{ "nameUser": "Fedor", "emailUser":"fedor@gmail.com" }');
+			parser.createRowPeople('{ "nameUser": "Peter", "emailUser":"peter@gmail.com" }');
+			parser.createRowPeople('{ "nameUser": "Alex", "emailUser":"alex@gmail.com" }');
+		});	  	  
+    </script>
+    <!-- Placed at the end of the document so the pages load faster -->
+  </body>
+</html>
