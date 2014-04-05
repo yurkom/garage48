@@ -1,8 +1,6 @@
 package models
 
 import play.api.libs.json.Json
-import models.Name.NameBSONReader
-import models.Name.NameBSONWriter
 import play.api.libs.functional.syntax.functionalCanBuildApplicative
 import play.api.libs.functional.syntax.toFunctionalBuilderOps
 import reactivemongo.bson.BSONDocument

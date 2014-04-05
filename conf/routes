@@ -29,17 +29,9 @@ DELETE  /api/events/:id 			controllers.Events.delete(id: String)
 POST    /api/enter                  controllers.Users.enter
 POST    /api/signup                 controllers.Users.signup
 GET     /api/users                  controllers.Users.index
-POST    /api/users/create           controllers.Users.create
 GET     /api/users/:id              controllers.Users.show(id: String)
 POST    /api/users/:id		        controllers.Users.update(id: String)
 DELETE  /api/users/:id		        controllers.Users.delete(id: String)
-
-# Play routes serving JSON to AngularJS start with /api
-GET     /api/celebrities            controllers.Celebrities.index
-POST    /api/celebrities/new		controllers.Celebrities.create
-GET     /api/celebrities/:id		controllers.Celebrities.show(id: String)
-POST    /api/celebrities/:id		controllers.Celebrities.update(id: String)
-DELETE  /api/celebrities/:id		controllers.Celebrities.delete(id: String)
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)

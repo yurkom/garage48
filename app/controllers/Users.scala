@@ -24,6 +24,7 @@ import reactivemongo.bson.Producer.nameValue2Producer
 
 object Users extends Controller with MongoController {
   val collection = db[BSONCollection]("users")
+  def getValue(map: Map[String, Seq[String]], key: String) : String = if (map.contains(key)) map.get(key).get(0) else ""
 
   /** Login */
   def enter() = Action { implicit request =>
@@ -37,14 +38,18 @@ object Users extends Controller with MongoController {
     }
   }
   
-  def signup() = Action { implicit request =>
+  def signup() = Action { request =>
     Async {
-	  val login = request.body.asFormUrlEncoded.get("login")(0)
-      val password = request.body.asFormUrlEncoded.get("password")(0)
+	  val login = getValue(request.body.asFormUrlEncoded.get, "login")
+      val password = getValue(request.body.asFormUrlEncoded.get, "password")
+	  val email = getValue(request.body.asFormUrlEncoded.get, "email")
+	  val role = getValue(request.body.asFormUrlEncoded.get, "role")
+	  val descr = getValue(request.body.asFormUrlEncoded.get, "descr")
+	  val phone = getValue(request.body.asFormUrlEncoded.get, "phone")
 	  
-      // get the user having this login/password (there will be 0 or 1 result)
-      val futureUser = collection.find(BSONDocument("login" -> login, "password" -> password)).one[User]
-      futureUser.map { user => Ok(Json.toJson(user)) }
+	  val user = User(Option(BSONObjectID.generate), login, password, email, role, descr, phone) // create the user
+      collection.insert(user).map(
+        _ => Ok(Json.toJson(user))) // return the created user in a JSON
     }
   }
   
@@ -58,18 +63,7 @@ object Users extends Controller with MongoController {
       futureList.map { users => Ok(Json.toJson(users)) } // convert it to a JSON and return it
     }
   }
-  
-  /** create a user from the given JSON */
-  def create() = Action(parse.json) { request =>
-    Async {
-      val login = request.body.\("login").toString().replace("\"", "")
-      val password = request.body.\("password").toString().replace("\"", "")
-      val email = request.body.\("email").toString().replace("\"", "")
-      val user = User(Option(BSONObjectID.generate), login, password, email) // create the user
-      collection.insert(user).map(
-        _ => Ok(Json.toJson(user))) // return the created user in a JSON
-    }
-  }
+
   
   /** retrieve the user for the given id as JSON */
   def show(id: String) = Action(parse.empty) { request =>
@@ -82,19 +76,25 @@ object Users extends Controller with MongoController {
   }
   
   /** update the user for the given id from the JSON body */
-  def update(id: String) = Action(parse.json) { request =>
+  def update(id: String) = Action { implicit request =>
     Async {
       val objectID = new BSONObjectID(id) // get the corresponding BSONObjectID
-      val login = request.body.\("login").toString().replace("\"", "")
-      val password = request.body.\("password").toString().replace("\"", "")
-      val email = request.body.\("email").toString().replace("\"", "")
+	  val login = getValue(request.body.asFormUrlEncoded.get, "login")
+      val password = getValue(request.body.asFormUrlEncoded.get, "password")
+	  val email = getValue(request.body.asFormUrlEncoded.get, "email")
+	  val role = getValue(request.body.asFormUrlEncoded.get, "role")
+	  val descr = getValue(request.body.asFormUrlEncoded.get, "descr")
+	  val phone = getValue(request.body.asFormUrlEncoded.get, "phone")
       val modifier = BSONDocument( // create the modifier user
         "$set" -> BSONDocument(
-          "login" -> login,
-          "password" -> password,
-          "email" -> email))
+        "login" -> login,
+        "password" -> password,
+        "email" -> email,
+		"phone" -> phone,
+		"descr" -> descr,
+		"role" -> role))
       collection.update(BSONDocument("_id" -> objectID), modifier).map(
-        _ => Ok(Json.toJson(User(Option(objectID), login, password, email)))) // return the modified user in a JSON
+        _ => Ok(Json.toJson(User(Option(objectID), login, password, email, role, descr, phone)))) // return the modified user in a JSON
     }
   }
   

@@ -5,46 +5,97 @@
 		  <div class="page-header">
 			<h1 class="text-success"><img style='display: inline-block;' src="@routes.Assets.at("images/football.jpg")" alt="football_img" class="img-responsive center-block "> Sign in</h1>
 		  </div>		
-		  
-			<form class="form-inline" role="form">
+
 				<h3 class="text-warning">Who are you?</h3> 
 				<button type="button" id="trainer-btn-reg" class="btn btn-success navbar-btn">Trainer</button>
 				<button type="button" id="user-btn-reg" class="btn btn-warning navbar-btn">User</button>	
 								
+                    <form action="api/signup" method="POST" class="form-inline" role="form">	
 				<div id="user-registration" class="hidden">
 					<h3 class="text-success">User Registration</h3>
-					<div class="form-group">						
-						<p><input type="text" class="form-control" id="login" placeholder="Login"></p>						
-						<p><input type="text" class="form-control" id="password" placeholder="Password"></p>
-						<p><input type="text" class="form-control" id="email" placeholder="E-mail"></p>
-						<p><input type="text" class="form-control" id="mobile" placeholder="Mobile Phone"></p>
-						
-						<div class="btn-group"> <a class="btn btn-default dropdown-toggle btn-select2" data-toggle="dropdown" href="#">Sex <span class="caret"></span></a>
-							<ul class="dropdown-menu">
-								<li><a class="" href="#">Male</a></li>
-								<li><a class="" href="#">Female</a></li>
-							</ul>
-						</div>					
+					<div class="form-group">
+                           <input type="hidden" name="role" value="user">					
+						<p><input type="text" class="form-control" name="login" placeholder="Login"></p>						
+						<p><input type="text" class="form-control" name="password" placeholder="Password"></p>
+						<p><input type="text" class="form-control" name="email" placeholder="E-mail"></p>
+						<p><input type="text" class="form-control" name="phone" placeholder="Mobile Phone"></p>
+										
 						<p></p>
-						<button class="btn btn-success btn-lg" type="submit"  ><b>Registration</b></button>
-						
+						<button class="btn btn-success btn-lg" type="submit"  ><b>Sign Up</b></button>
 					</div>
 				</div>
+					</form>	
 				
-				
+                    <form action="api/signup" method="POST" class="form-inline" role="form">
+	
 				<div id="trainer-registration" class="hidden">
 					<h3 class="text-success">Trainer Registration</h3>
-					<div class="form-group">						
-						<p><input type="text" class="form-control" id="login" placeholder="Login"></p>						
-						<p><input type="text" class="form-control" id="password" placeholder="Password"></p>
-						<p><input type="text" class="form-control" id="email" placeholder="E-mail"></p>
-						<textarea class="form-control" id="TextArea" placeholder="Description"></textarea>
+					<div class="form-group">
+					    <input type="hidden" name="role" value="trainer">
+						<p><input type="text" class="form-control" name="login" placeholder="Login"></p>						
+						<p><input type="text" class="form-control" name="password" placeholder="Password"></p>
+						<p><input type="text" class="form-control" name="email" placeholder="E-mail"></p>
+						<p><textarea class="form-control" name="descr" placeholder="Description"></textarea></p>
 						<p></p>
-						<button  class="btn btn-success btn-lg" type="submit" ><b>Registration</b></button>
-						
+						<button  class="btn btn-success btn-lg" type="submit" ><b>Sign Up</b></button>
 					</div>
-				</div>
-			</form>		
+				</div>	
+					</form>	
 		</div>
 	</div>
+	<script  type="text/javascript">
+	var login = {};
+
+login.trainerButtonReg = '#trainer-btn-reg';
+login.userButtonReg = '#user-btn-reg';
+login.trainerReg = '#trainer-registration';
+login.userReg = '#user-registration';
+
+login.init = function () {
+	try {
+		$(login.trainerReg).addClass('hidden');
+		$(login.trainerReg).removeClass('show');
+		$(login.userReg).addClass('hidden');
+		$(login.userReg).removeClass('show');		
+		$(login.trainerButtonReg).click(login.trainerShowReg);
+		$(login.userButtonReg).click(login.userShowReg);
+		return true;
+	} catch (e) {
+		console.error(e);
+		return false;
+	}
+}
+
+login.trainerShowReg = function(){
+	try {		
+		$(login.userReg).addClass('hidden');
+		$(login.userReg).removeClass('show');
+		$(login.trainerReg).addClass('show');
+		$(login.trainerReg).removeClass('hidden');	
+		//console.log("train");		
+		return true;
+	} catch (e) {
+		console.error(e);
+		return false;
+	}
+}
+
+login.userShowReg = function(){
+	try {		
+		$(login.userReg).addClass('show');
+		$(login.userReg).removeClass('hidden');
+		$(login.trainerReg).addClass('hidden');
+		$(login.trainerReg).removeClass('show');	
+		//console.log("user");
+		return true;
+	} catch (e) {
+		console.error(e);
+		return false;
+	}
+}
+
+$(document).ready(function() {
+				login.init();
+			});
+</script>
 }

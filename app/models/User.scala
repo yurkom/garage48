@@ -1,8 +1,6 @@
 package models
 
 import play.api.libs.json.Json
-import models.Name.NameBSONReader
-import models.Name.NameBSONWriter
 import play.api.libs.functional.syntax.functionalCanBuildApplicative
 import play.api.libs.functional.syntax.toFunctionalBuilderOps
 import reactivemongo.bson.BSONDocument
@@ -18,7 +16,13 @@ import play.modules.reactivemongo.json.BSONFormats.BSONObjectIDFormat
  * Author: Yury Molchan
  */
 
-case class User(id: Option[BSONObjectID], login: String, password: String, email: String)
+case class User(id: Option[BSONObjectID], 
+		login: String, 
+		password: String, 
+		email: String, 
+		role: String, 
+		descr: String, 
+		phone: String)
 
 object User {
   /** serialize/Deserialize a User into/from JSON value */
@@ -31,7 +35,10 @@ object User {
         "_id" -> user.id.getOrElse(BSONObjectID.generate),
         "login" -> user.login,
         "password" -> user.password,
-        "email" -> user.email)
+        "email" -> user.email,
+		"phone" -> user.phone,
+		"descr" -> user.descr,
+		"role" -> user.role)
   }
 
   /** deserialize a User from a BSON */
@@ -41,6 +48,9 @@ object User {
         doc.getAs[BSONObjectID]("_id"),
         doc.getAs[String]("login").get,
         doc.getAs[String]("password").get,
-        doc.getAs[String]("email").get)
+        doc.getAs[String]("email").get,
+        doc.getAs[String]("role").get,
+        doc.getAs[String]("descr").get,
+        doc.getAs[String]("phone").get)
   }
 }
