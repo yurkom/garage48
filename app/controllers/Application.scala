@@ -17,6 +17,10 @@ object Application extends Controller {
     Ok(views.html.index())
   }
   
+  def login = Action {
+    Ok(views.html.login())
+  }
+  
   /** resolve "any" into the corresponding HTML page URI */
   def getURI(any: String): String = any match {
     case "main" => "/public/html/main.html"
