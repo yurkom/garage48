@@ -26,6 +26,8 @@ POST	/api/events/:id 			controllers.Events.update(id: String)
 DELETE  /api/events/:id 			controllers.Events.delete(id: String)
 
 # CRUD Users
+POST    /api/enter                  controllers.Users.enter
+POST    /api/signup                 controllers.Users.signup
 GET     /api/users                  controllers.Users.index
 POST    /api/users/create           controllers.Users.create
 GET     /api/users/:id              controllers.Users.show(id: String)

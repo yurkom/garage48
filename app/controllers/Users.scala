@@ -25,6 +25,30 @@ import reactivemongo.bson.Producer.nameValue2Producer
 object Users extends Controller with MongoController {
   val collection = db[BSONCollection]("users")
 
+  /** Login */
+  def enter() = Action { implicit request =>
+    Async {
+	  val login = request.body.asFormUrlEncoded.get("login")(0)
+      val password = request.body.asFormUrlEncoded.get("password")(0)
+	  
+      // get the user having this login/password (there will be 0 or 1 result)
+      val futureUser = collection.find(BSONDocument("login" -> login, "password" -> password)).one[User]
+      futureUser.map { user => Ok(Json.toJson(user)) }
+    }
+  }
+  
+  def signup() = Action { implicit request =>
+    Async {
+	  val login = request.body.asFormUrlEncoded.get("login")(0)
+      val password = request.body.asFormUrlEncoded.get("password")(0)
+	  
+      // get the user having this login/password (there will be 0 or 1 result)
+      val futureUser = collection.find(BSONDocument("login" -> login, "password" -> password)).one[User]
+      futureUser.map { user => Ok(Json.toJson(user)) }
+    }
+  }
+  
+  
   /** list all users */
   def index = Action { implicit request =>
     Async {
