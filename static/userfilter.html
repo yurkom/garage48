@@ -1,8 +1,30 @@
-@main("Welcome to Play Framework") {
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+	
+    <link href="css/datepicker.css" rel="stylesheet">
+	<link href="css/sticky-footer.css" rel="stylesheet">
+    <title>User Filter</title>
+
+    
+    <link href="css/bootstrap.min.css" rel="stylesheet">    
+	<style media="screen" type="text/css">
+		.wrapper {
+			padding-left: 15px;
+			padding-right: 15px;
+		}
+	</style>  
+  </head>
+
+  <body>
 	<div class="wrapper">
 		<div class="container">
 		  	<div class="page-header">
-			<h1 class="text-success"><img style='display: inline-block;' src="@routes.Assets.at("images/voleyball.jpg")" alt="volleyball_img" class="img-responsive center-block "> Choose Event</h1>
+			<h1 class="text-success"><img style='display: inline-block;' src="image/voleyball.jpg" alt="volleyball_img" class="img-responsive center-block "> Choose Event</h1>
 		  </div>
 			<p><a href='my_events.html' target='_blank'><span class='glyphicon glyphicon-eye-open'></span> My events</a></p>
 			<form class="form-inline" role="form">
@@ -44,8 +66,38 @@
 				
 			</form>		
 		</div>
+		
+
+   
+      
+        
+
 
 	</div>
 	
-}
 	
+	
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+	<script src="js/jQuery.js"></script>
+	<script src="js/bootstrap.js"></script>
+	<script src="js/datepicker.js"></script>
+
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('.datepicker').datepicker();			
+		});	  	
+		
+		$(".dropdown-menu li a").click(function(){
+			var selText = $(this).text();
+			$(this).parents('.btn-group').find('.dropdown-toggle').html(selText+' <span class="caret"></span>');
+		});
+
+		$("#btnSearch").click(function(){
+			alert($('.btn-select').text()+", "+$('.btn-select2').text());
+		});
+    </script>
+    <!-- Placed at the end of the document so the pages load faster -->
+  </body>
+</html>

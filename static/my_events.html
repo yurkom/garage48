@@ -7,7 +7,7 @@
     <meta name="author" content="">
    
 	<link href="css/sticky-footer.css" rel="stylesheet">
-    <title>People list</title>
+    <title>My Events</title>
 
     
     <link href="css/bootstrap.min.css" rel="stylesheet">    
@@ -22,17 +22,25 @@
   <body>
 	<div class="wrapper">
 		<div class="container">
-		  	 <div class="page-header">
-			<h1 class="text-success"><img style='display: inline-block;' src="image/box.jpg" alt="box_img" class="img-responsive center-block "> People on Event</h1>
-		  </div>	
+		 
+		  	<div class="page-header">
+			<h1 class="text-success"><img style='display: inline-block;' src="image/swim.jpg" alt="swim_img" class="img-responsive center-block "> My Events</h1>
+		  </div>
 		  
 			<form class="form-inline" role="form">
 				
 				<table class="table" id="personTable">
 					 <tr>
-						<th class="text-success">Name</th>
-						<th class="text-success"><span class="glyphicon glyphicon-envelope"></span></th>										
-					 </tr>					 
+						<th class="text-success">Event</th>
+						<th class="text-success">Date</th>
+						<th class="text-success">Delete event</th>														
+					 </tr>	
+					<tr>
+						<td>Football</td>
+						<td>11/11/11</td>
+						<td><a href="#"><span class="glyphicon glyphicon-remove-sign"></span></a></td>														
+					</tr>	
+								 
 				</table>
 				
 				<button  class="btn btn-warning btn-lg" type="submit" id="close-bnt"><b>Close</b></button>
@@ -53,10 +61,7 @@
 			$('#close-bnt').click(function(){
 				window.open('', '_self', ''); //bug fix
 				window.close();
-			});
-			parser.createRowPeople('{ "nameUser": "Fedor", "emailUser":"fedor@gmail.com" }');
-			parser.createRowPeople('{ "nameUser": "Peter", "emailUser":"peter@gmail.com" }');
-			parser.createRowPeople('{ "nameUser": "Alex", "emailUser":"alex@gmail.com" }');
+			});		
 		});	  	  
     </script>
     <!-- Placed at the end of the document so the pages load faster -->

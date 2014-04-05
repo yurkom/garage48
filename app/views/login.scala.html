@@ -1,21 +1,21 @@
 @main("Welcome to Play Framework") {
-
 	<div class="wrapper">
 		<div class="row">
 			<div class="col-sm-3 col-md-4 col-lg-4">
 			</div>
 			<div class="col-sm-5 col-md-4 col-lg-4">
-				<h2 class="form-signin-heading">Please sign</h2>
+				<h2 class="form-signin-heading text-success">Please sign</h2>
 				<form action="api/enter" method="POST">
 				<input type="text" class="form-control" placeholder="Login" name="login" id="login">
-				<input type="password" class="form-control"placeholder="Password" name="password" id="password">				
+				<input type="password" class="form-control"placeholder="Password" name="password" id="password">
 				<p></p>
-				<button class="btn btn-lg btn-primary btn-block" type="submit">Log in</button>
+				<button class="btn btn-lg btn-success btn-block" type="submit">Log in</button>
 				</form>
 				<br/>
 				<p><a href="registration">Sign Up</a></p>
 				<br/>
 				<div class="alert alert-danger hidden" id="no_user">Error login or password.</div>
+				<img src="@routes.Assets.at("images/sports.jpg")"alt="sport_img" class="img-responsive center-block ">
 			</div>
 			<div class="col-sm-3 col-md-4 col-l-4">
 			</div>

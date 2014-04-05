@@ -18,7 +18,7 @@ import play.modules.reactivemongo.json.BSONFormats.BSONObjectIDFormat
 * Author Andrei Ruban
 */
 
-case class Event(id: Option[BSONObjectID], place: String, date: Date, level: String, sportKind: String, tradeText: String)
+case class Event(id: Option[BSONObjectID], place: String, date: String, level: String, sportKind: String, tradeText: String)
 
 object Event {
 	 /** serialize/Deserialize an Event into/from JSON value */
@@ -41,7 +41,8 @@ object Event {
       Event(
         doc.getAs[BSONObjectID]("_id"),
         doc.getAs[String]("place").get,
-        doc.getAs[Date]("date").get,
+        doc.getAs[String]("date").get,
+        doc.getAs[String]("level").get,
         doc.getAs[String]("sportKind").get,
         doc.getAs[String]("tradeText").get)
   }

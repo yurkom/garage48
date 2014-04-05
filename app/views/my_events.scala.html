@@ -1,27 +1,28 @@
 @main("Welcome to Play Framework") {
 	<div class="wrapper">
 		<div class="container">
-		  	<h1>My Events</h1>
+		 
+		  	<div class="page-header">
+			<h1 class="text-success"><img style='display: inline-block;' src="@routes.Assets.at("images/swim.jpg")" alt="swim_img" class="img-responsive center-block "> My Events</h1>
+		  </div>
 		  
 			<form class="form-inline" role="form">
 				
 				<table class="table" id="personTable">
 					 <tr>
-						<th>Event</th>
-						<th>Date</th>
-						<th>Delete event</th>														
+						<th class="text-success">Event</th>
+						<th class="text-success">Date</th>
+						<th class="text-success">Delete event</th>														
 					 </tr>	
 					<tr>
 						<td>Football</td>
 						<td>11/11/11</td>
-						<td><a><span class="glyphicon glyphicon-remove-sign"></span></a></td>														
+						<td><a href="#"><span class="glyphicon glyphicon-remove-sign"></span></a></td>														
 					</tr>	
 								 
 				</table>
 				
-				<form method="post">
-					<input type="button" value="Close" class="btn btn-default" id="close-bnt"/>
-				</form>
+				<button  class="btn btn-warning btn-lg" type="submit" id="close-bnt"><b>Close</b></button>
 			</form>		
 		</div>
 	</div>

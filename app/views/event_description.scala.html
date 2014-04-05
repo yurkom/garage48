@@ -1,12 +1,14 @@
 @main("Welcome to Play Framework") {
 	<div class="wrapper">
 		<div class="container">
-		  	<h1>Event description</h1>
+		  	 <div class="page-header">
+			<h1 class="text-success"><img style='display: inline-block;' src="@routes.Assets.at("images/box.jpg")" alt="box_img" class="img-responsive center-block "> Event Description</h1>
+		  </div>	
 		  
 			<form class="form-inline" role="form">
 			<p><b>Event Description: </b><br/><span id="event-description"> SUPER SPORT EVENT</span></p>
-			<input class="btn btn-danger" type="submit" value="Sign in"/>
-			<input type="button" value="Close" class="btn btn-default" id="close-bnt"/>
+			<button  class="btn btn-success btn-lg" type="submit" ><b>Enroll</b></button>
+			<button  class="btn btn-warning btn-lg" type="submit" id="close-bnt"><b>Close</b></button>
 	
 			</form>		
 		</div>

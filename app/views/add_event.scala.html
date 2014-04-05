@@ -1,41 +1,60 @@
 @main("Welcome to Play Framework") {
 
 	<div class="wrapper">
+
 		<div class="container">
 		  <div class="page-header">
-			<h1>Create Event</h1>
+			<h1 class="text-success"><img style='display: inline-block;' src="@routes.Assets.at("images/swim.jpg")" alt="swim_img" class="img-responsive center-block "> Create Event</h1>
 		  </div>		
 		  
-			<form class="form-inline" role="form">			
-					<h3>Event details</h3>
+			<form class="form-inline" role="form" >			
+					<h3 class="text-success">Event details</h3>
 					<div class="form-group">						
 						<p><input type="text" class="form-control" id="place" placeholder="Place"></p>						
-						<p><input type="text" class="form-control" id="password" placeholder="Password"></p>
 						<p><input type="text" class="form-control datepicker" id="Date" placeholder="Date"></p>
-						<b>Kind of sport:</b>
-						<select class="form-control">
-							<option value="football">Football</option>
-							<option value="basketball">Basketball</option>		
-							<option value="fitness">Fitness</option>	
-						</select>	
+						<div class="btn-group"> <a class="btn btn-default dropdown-toggle btn-select2" data-toggle="dropdown" href="#">Kind of sport <span class="caret"></span></a>
+							<ul class="dropdown-menu">
+								<li><a class="" href="#">Football</a></li>
+								<li><a class="" href="#">Basketball</a></li>
+								<li><a class="" href="#">Fitness</a></li>                
+							</ul>
+						</div>	
 						<p></p>
-						<b>Skill level:</b>
-						<select class="form-control">
-							<option value="football">Beginner</option>
-							<option value="basketball">Middle</option>		
-							<option value="fitness">Expert</option>	
-						</select>	
+						<div class="btn-group"> <a class="btn btn-default dropdown-toggle btn-select2" data-toggle="dropdown" href="#">Skill level <span class="caret"></span></a>
+							<ul class="dropdown-menu">
+								<li><a class="" href="#">Beginner</a></li>
+								<li><a class="" href="#">Middle</a></li>
+								<li><a class="" href="#">Expert</a></li>                
+							</ul>
+						</div>	<a href="levels_description.html" target="_blank"><span class="glyphicon glyphicon-question-sign"></span>	levels description</a>
 						<p></p>
 						<textarea class="form-control" id="TextArea" placeholder="Description"></textarea>
 						<p></p>
-						<input class="btn btn-danger" type="submit" value="Create Event">
-						<form method="post">
-							<input type="button" value="Close" class="btn btn-default" id="close-bnt"/>
-						</form>
+						<button  class="btn btn-success btn-lg" type="submit" ><b>Create Event</b></button>
+						<button  class="btn btn-warning btn-lg" type="submit" id="close-bnt"><b>Close</b></button>
+						
 					</div>
 					
 			</form>		
 		</div>
+		<script type="text/javascript">
+  $(document).ready(function() {
+   $('.datepicker').datepicker();
+   $('#close-bnt').click(function(){
+    window.open('', '_self', ''); //bug fix
+    window.close();
+   });   
+  });   
+  
+  $(".dropdown-menu li a").click(function(){
+   var selText = $(this).text();
+   $(this).parents('.btn-group').find('.dropdown-toggle').html(selText+' <span class="caret"></span>');
+  });
+
+  $("#btnSearch").click(function(){
+   alert($('.btn-select').text()+", "+$('.btn-select2').text());
+  });
+    </script>
 	</div>
 }	
 	

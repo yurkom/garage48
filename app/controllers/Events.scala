@@ -2,10 +2,11 @@ package controllers
 
 import scala.concurrent.ExecutionContext.Implicits.global
 
+import models.Event
+import models.Event.eventFormat
+import models.Event.EventBSONReader
+import models.Event.EventBSONWriter
 import models.User
-import models.User.userFormat
-import models.User.UserBSONReader
-import models.User.UserBSONWriter
 import play.api.libs.json.Json
 import play.api.mvc.Action
 import play.api.mvc.Controller
@@ -41,10 +42,10 @@ import reactivemongo.bson.Producer.nameValue2Producer
 
     	val place = request.body.\("place").toString().replace("\"", "")
     	val date = request.body.\("date").toString().replace("\"", "")
-    	val level = replace.body.\("level").toString().replace("\"", "")
+    	val level = request.body.\("level").toString().replace("\"", "")
     	val sportKind = request.body.\("sportKind").toString.replace("\"", "")
     	val tradeText = request.body.\("tradeText").toString.replace("\"", "")	
-    	val event = Event(Option(BSONObjectID.generate), place, date, level, sportKind, tradeText) // create an event
+      val event = Event(Option(BSONObjectID.generate), place, date, level, sportKind, tradeText) // create an event
     	collection.insert(event).map(_=> Ok(Json.toJson(event))) // return the created event in a JSON
     }
   }
@@ -65,7 +66,7 @@ import reactivemongo.bson.Producer.nameValue2Producer
   		val objectID = new BSONObjectID(id) // get the correspond 
   		val place = request.body.\("place").toString().replace("\"", "")
   		val date = request.body.\("date").toString().replace("\"", "")
-  		val level = request.body.\("level").toString().replacee("\"", "")
+  		val level = request.body.\("level").toString().replace("\"", "")
   		val sportKind = request.body.\("sportKind").toString.replace("\"", "")
   		val tradeText = request.body.\("tradeText").toString.replace("\"", "")
   		val modifier = BSONDocument( // create the modifier event

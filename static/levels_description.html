@@ -1,0 +1,76 @@
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+	
+    <link href="css/datepicker.css" rel="stylesheet">
+	<link href="css/sticky-footer.css" rel="stylesheet">
+    <title>Level description</title>
+
+    
+    <link href="css/bootstrap.min.css" rel="stylesheet">    
+	<style media="screen" type="text/css">
+		.wrapper {
+			padding-left: 15px;
+			padding-right: 15px;
+		}
+	</style>  
+  </head>
+
+  <body>
+	<div class="wrapper">
+		<div class="container">
+		  	 <div class="page-header">
+			<h1 class="text-success"><img style='display: inline-block;' src="image/box.jpg" alt="box_img" class="img-responsive center-block "> Level Description</h1>
+		  </div>
+		  
+			<form class="form-inline" role="form">
+			
+			<table class="table" id="levelsDescription">
+					 <tr>
+						<th class="text-success">Level</th>
+						<th class="text-warning">Description</th>															
+					 </tr>	
+					<tr>
+						<td class="text-success"><b>Beginner</b></td>
+						<td>The New Guy -- A high school loser who wants to be popular and respected ... the South Harmon Institute of Technology, on a rundown piece of property ..... Q: What are the differences between the Theatrical Version and the Director's Cut?</td>															
+					</tr>	
+					<tr>
+						<td class="text-warning"><b>Middle</b></td>
+						<td>The Middle is an American sitcom, airing on ABC since September 30, 2009. The show was created by former How I Met Your Mother executive producers ...</td>															
+					</tr>	
+					<tr>
+						<td class="text-danger"><b>Expert</b></td>
+						<td>A person with a high degree of skill in or knowledge of a certain subject. 2. a. The highest grade that can be achieved in marksmanship. b. A person who has ...</td>															
+					</tr>	
+			</table>
+				
+			<button  class="btn btn-warning btn-lg" type="submit" id="close-bnt"><b>Close</b></button>
+	
+			</form>		
+		</div>
+	</div>
+	
+	
+	
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+	<script src="js/jQuery.js"></script>
+	<script src="js/bootstrap.js"></script>
+	<script src="js/datepicker.js"></script>
+
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('#close-bnt').click(function(){
+				window.open('', '_self', ''); //bug fix
+				window.close();
+			});			
+		});	  	  
+    </script>
+    <!-- Placed at the end of the document so the pages load faster -->
+  </body>
+</html>
