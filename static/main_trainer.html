@@ -46,11 +46,15 @@
 	<script src="js/bootstrap.js"></script>
 	<script src="js/parser.js"></script>
 	<script type="text/javascript">
+		var data = [{ "typeOfSport": "Football", "date":"11/11/12" },{ "typeOfSport": "Basketball", "date":"11/11/13" }];
 		$(document).ready(function() {
-			parser.createRowEventTable('{ "typeOfSport": "Football", "date":"11/11/12" }');
+			for(var i = 0; i < data.length; i++){
+				parser.createRowEventTable(data[i]);
+			}
+		/*	parser.createRowEventTable('{ "typeOfSport": "Football", "date":"11/11/12" }');
 			parser.createRowEventTable('{ "typeOfSport": "Basketball", "date":"11/11/13" }');
 			parser.createRowEventTable('{ "typeOfSport": "Fitness", "date":"11/11/14" }');
-			parser.createRowEventTable('{ "typeOfSport": "Yoga", "date":"11/11/15" }');
+			parser.createRowEventTable('{ "typeOfSport": "Yoga", "date":"11/11/15" }');*/
 		});	  	  
     </script>
     <!-- Placed at the end of the document so the pages load faster -->
