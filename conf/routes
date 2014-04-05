@@ -18,6 +18,13 @@ GET		/userfilter					controllers.Application.userfilter
 # Play routes serving HTML to AngularJS start with /views
 GET     /views/*any                 controllers.Application.loadPublicHTML(any)
 
+# CRUID Events 
+GET		/api/events 				controllers.Events.index
+POST	/api/events/create 			controllers.Events.create
+GET		/api/events/:id 			controllers.Events.show(id: String)
+POST	/api/events/:id 			controllers.Events.update(id: String)
+DELETE  /api/events/:id 			controllers.Events.delete(id: String)
+
 # CRUD Users
 GET     /api/users                  controllers.Users.index
 POST    /api/users/create           controllers.Users.create
