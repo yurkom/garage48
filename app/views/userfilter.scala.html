@@ -1,0 +1,49 @@
+@main("Welcome to Play Framework") {
+	<div class="wrapper">
+		<div class="container">
+		  	<h1>Choose event</h1>
+			<p><a href='my_events.html' target='_blank'><span class='glyphicon glyphicon-eye-open'></span> My events</a></p>
+			<form class="form-inline" role="form">
+				<p><input type="text" class="form-control" id="place" placeholder="Place"></p>
+				<p><input type="text" class="form-control datepicker" id="Date" placeholder="Date"></p>
+				<p></p>
+				<div class="btn-group"> <a class="btn btn-default dropdown-toggle btn-select2" data-toggle="dropdown" href="#">Skill level <span class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<li><a class="" href="#">Beginner</a></li>
+						<li><a class="" href="#">Middle</a></li>
+						<li><a class="" href="#">Expert</a></li>                
+					</ul>
+				</div>	<a href="levels_description.html" target="_blank"><span class="glyphicon glyphicon-question-sign"></span>	levels description</a>
+				<p></p>
+				<div class="btn-group"> <a class="btn btn-default dropdown-toggle btn-select2" data-toggle="dropdown" href="#">Kind of sport <span class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<li><a class="" href="#">Football</a></li>
+						<li><a class="" href="#">Basketball</a></li>
+						<li><a class="" href="#">Fitness</a></li>                
+					</ul>
+				</div>
+        
+				<p></p>
+				<input class="btn btn-danger" type="submit" value="Find">							
+				<p></p>
+				
+				<table class="table" id="personEvents">
+					 <tr>
+						<th>Description of event</th>
+						<th>Date</th>
+						<th></th>										
+					 </tr>	
+					<tr>
+						<td>Football meet</td>
+						<td>11/11/11</td>
+						<td><a href='event_description.html' target='_blank'><span class='glyphicon glyphicon-eye-open'></span></a></td>										
+					 </tr>		
+				</table>
+				
+			</form>		
+		</div>
+		
+</div>
+	
+}
+	

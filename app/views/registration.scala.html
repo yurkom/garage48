@@ -1,0 +1,48 @@
+@main("Welcome to Play Framework") {
+
+	<div class="wrapper">
+		<div class="container">
+		  <div class="page-header">
+			<h1>Registration</h1>
+		  </div>		
+		  
+			<form class="form-inline" role="form">
+				<h3>Who are you?</h3>
+				<button type="button" id="trainer-btn-reg" class="btn btn-danger navbar-btn">Trainer</button>
+				<button type="button" id="user-btn-reg" class="btn btn-info navbar-btn">User</button>	
+								
+				<div id="user-registration" class="hidden">
+					<h3>User Registration</h3>
+					<div class="form-group">						
+						<p><input type="text" class="form-control" id="login" placeholder="Login"></p>						
+						<p><input type="text" class="form-control" id="password" placeholder="Password"></p>
+						<p><input type="text" class="form-control" id="email" placeholder="E-mail"></p>
+						<p><input type="text" class="form-control" id="mobile" placeholder="Mobile Phone"></p>
+						
+						<select class="form-control">
+							<option value="male">Male</option>
+							<option value="female">Female</option>							
+						</select>						
+						<p></p>
+						<input class="btn btn-danger" type="submit" value="Registration">
+						
+					</div>
+				</div>
+				
+				
+				<div id="trainer-registration" class="hidden">
+					<h3>Trainer Registration</h3>
+					<div class="form-group">						
+						<p><input type="text" class="form-control" id="login" placeholder="Login"></p>						
+						<p><input type="text" class="form-control" id="password" placeholder="Password"></p>
+						<p><input type="text" class="form-control" id="email" placeholder="E-mail"></p>
+						<textarea class="form-control" id="TextArea" placeholder="Description"></textarea>
+						<p></p>
+						<input class="btn btn-danger" type="submit" value="Registration">
+						
+					</div>
+				</div>
+			</form>		
+		</div>
+	</div>
+}

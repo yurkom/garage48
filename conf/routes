@@ -6,6 +6,14 @@
 GET     /                           controllers.Application.index(any = "none")
 
 GET     /login                      controllers.Application.login
+GET     /add_event					controllers.Application.add_event
+GET     /main_trainer				controllers.Application.main_trainer
+GET     /people_list				controllers.Application.people_list
+GET     /registration				controllers.Application.registration
+GET     /event_description			controllers.Application.event_description
+GET		/my_events					controllers.Application.my_events
+GET		/levels_description			controllers.Application.levels_description
+GET		/userfilter					controllers.Application.userfilter
 
 # Play routes serving HTML to AngularJS start with /views
 GET     /views/*any                 controllers.Application.loadPublicHTML(any)

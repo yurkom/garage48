@@ -20,6 +20,38 @@ object Application extends Controller {
   def login = Action {
     Ok(views.html.login())
   }
+
+  def add_event = Action {
+    Ok(views.html.add_event())
+  }
+
+  def main_trainer = Action {
+    Ok(views.html.main_trainer())
+  }
+
+  def people_list = Action {
+    Ok(views.html.people_list())
+  }
+
+  def registration = Action {
+    Ok(views.html.registration())
+  }
+
+  def event_description = Action{
+    Ok(views.html.event_description())
+  }
+
+  def my_events = Action{
+    Ok(views.html.my_events())
+  }
+
+  def levels_description = Action{
+    Ok(views.html.levels_description())
+  }
+
+  def userfilter = Action{
+    Ok(views.html.userfilter())
+  }
   
   /** resolve "any" into the corresponding HTML page URI */
   def getURI(any: String): String = any match {
