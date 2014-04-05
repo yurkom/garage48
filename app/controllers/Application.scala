@@ -13,10 +13,14 @@ import play.api.mvc.Controller
 object Application extends Controller {
   
   /** serve the index page app/views/index.scala.html */
-  def index(any: String) = Action {
-    Ok(views.html.index())
+  def index = Action {
+    Ok(views.html.login())
   }
   
+  def redirect(any: String) = Action {
+    Redirect("/")
+  }
+
   def login = Action {
     Ok(views.html.login())
   }

@@ -3,7 +3,7 @@
 # ~~~~
 
 # Home page
-GET     /                           controllers.Application.index(any = "none")
+GET     /                           controllers.Application.index
 
 GET     /login                      controllers.Application.login
 GET     /add_event					controllers.Application.add_event
@@ -39,4 +39,4 @@ GET     /assets/*file               controllers.Assets.at(path="/public", file)
 
 
 # Redirect all unknown routes to the index page
-GET     /*any						controllers.Application.index(any)
+GET     /*any						controllers.Application.redirect(any)

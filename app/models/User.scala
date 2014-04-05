@@ -46,11 +46,11 @@ object User {
     def read(doc: BSONDocument): User =
       User(
         doc.getAs[BSONObjectID]("_id"),
-        doc.getAs[String]("login").get,
-        doc.getAs[String]("password").get,
-        doc.getAs[String]("email").get,
-        doc.getAs[String]("role").get,
-        doc.getAs[String]("descr").get,
-        doc.getAs[String]("phone").get)
+        doc.getAs[String]("login").orNull,
+        doc.getAs[String]("password").orNull,
+        doc.getAs[String]("email").orNull,
+        doc.getAs[String]("role").orNull,
+        doc.getAs[String]("descr").orNull,
+        doc.getAs[String]("phone").orNull)
   }
 }
