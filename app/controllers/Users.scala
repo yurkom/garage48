@@ -54,7 +54,11 @@ object Users extends Controller with MongoController {
 	  
 	  val user = User(Option(BSONObjectID.generate), login, password, email, role, descr, phone) // create the user
       collection.insert(user).map(
-        _ => Ok(Json.toJson(user))) // return the created user in a JSON
+        _ => {
+		    if (role == "user") Ok(views.html.my_events())
+			else if (role == "trainer") Ok(views.html.main_trainer())
+			else Redirect("/")
+		}) // return the created user in a JSON
     }
   }
   
