@@ -84,20 +84,20 @@
 			<div>
 				<div class="bcg"></div>
 				<input type="text" class="form-control" id="place" placeholder="Place">
-				<input type="text" class="form-control datepicker" id="Date" placeholder="Date">
+				<input type="text" class="form-control datepicker" id="date" placeholder="Date">
 				<b>Kind of sport:</b>
-				<select class="form-control">
+				<select class="form-control" id="sportKind">
 					<option value="football">Football</option>
 					<option value="basketball">Basketball</option>
 					<option value="fitness">Fitness</option>	
 				</select></br>												
 				<b>Skill level:</b>
-				<select class="form-control">
+				<select class="form-control" id="level">
 					<option value="football">Beginner</option>
 					<option value="basketball">Middle</option>		
 					<option value="fitness">Expert</option>	
 				</select></br>
-				<textarea class="form-control" id="TextArea" placeholder="Description"></textarea></br>
+				<textarea class="form-control" id="tradeText" placeholder="Description"></textarea></br>
 				<button id="create_post" type="submit" onclick="add();" value="Create Event">Create event</button>
 				<span id="close_newpost_bnt">close</span>
 			</div>
