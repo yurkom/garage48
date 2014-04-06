@@ -1,0 +1,198 @@
+@(id: String)
+<!DOCTYPE HTML>
+<!-- TRAINER PROFILE -->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Trainer Profile (@id)</title>
+    <link href="css/login.css" rel="stylesheet">
+   </head>
+  <body>
+  	 <figure class="bcg" id="profile_bcg"></figure>
+
+	<header>
+		<figure></figure>
+		<div id="logo"></div>
+		<h5>
+			Urban sport entry point
+		</h5>
+	</header>
+
+  	<div> <!-- MAIN CONTAINER  -->
+  	
+  	<section id="profile">
+  		<figure class="bcg"></figure>
+  		<figure id="ava" class="train"></figure>
+  		<div>
+  			<p class="profile_des">
+  				Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+  			</p>
+  			<div>
+  			</div>
+  			<button>
+  					Log out
+  			</button>
+  		</div>
+  	</section>
+
+	<section id="trainer_table">
+			<div>
+				<h5>Youre events</h5>
+				<table  id="eventsTable">
+					 <tr>
+						<th>
+							<span>
+								Type
+							</span>
+						</th>
+						<th>
+							<span>
+								Level
+							</span>
+						</th>
+						<th>
+							<span>
+								Place
+							</span>
+						</th>
+						<th>
+							<span>
+								Date
+							</span>
+						</th>
+						<th>
+							<span>
+								Users
+							</span>
+						</th>
+					 </tr>
+				</table>
+				<button>
+					Add event
+				</button>
+			</div>
+	</section>
+
+	<section id="create_event">
+		<div>
+			<figure class="bcg" id="create_event_bcg"></figure>
+			<h5>Event details</h5>
+			<div>
+				<div class="bcg"></div>
+				<input type="text" class="form-control" id="place" placeholder="Place">
+				<input type="text" class="form-control datepicker" id="Date" placeholder="Date">
+				<b>Kind of sport:</b>
+				<select class="form-control">
+					<option value="football">Football</option>
+					<option value="basketball">Basketball</option>
+					<option value="fitness">Fitness</option>	
+				</select></br>												
+				<b>Skill level:</b>
+				<select class="form-control">
+					<option value="football">Beginner</option>
+					<option value="basketball">Middle</option>		
+					<option value="fitness">Expert</option>	
+				</select></br>
+				<textarea class="form-control" id="TextArea" placeholder="Description"></textarea></br>
+				<button id="create_post" type="submit" value="Create Event">Create event</button>
+				<span id="close_newpost_bnt">close</span>
+			</div>
+		</div>	
+	</section>
+
+<!--<section id="event_item">
+	</section> -->
+
+
+
+
+	</div> <!-- DON'T TOUCH -->
+
+
+<footer>
+	<figure class="bcg"></figure>
+	<section>
+		Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+	</section>
+</footer>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+	<script src="js/jQuery.js"></script>
+	<script src="js/bootstrap.js"></script>
+<script type="text/javascript">
+$.ajax({
+        type: "GET",
+        //the url where you want to sent the userName and password to
+        url: '/api/events/@id',
+        dataType: 'json',
+  contentType:"application/json; charset=utf-8",
+        //async: false,
+        //json object to sent to the authentication url
+        
+        success: function (data) {
+
+        $("#eventsTable").html(generate(data));
+        }
+    });
+	
+	function generate(data) {
+	var table = "<tr><th><span>Type</span></th>"+
+	"<th><span>Level</span></th>"+
+	"<th><span>Place</span></th>"+
+	"<th><span>Date</span></th>"+
+	"<th><span>Users</span></th></tr>";
+	
+	for(var i = 0; i<data.length; i++){
+	table = table + "<tr><td>" + data[i].sportKind +
+		 "</td><td>" + data[i].level +
+		 "</td><td>" + data[i].place +
+		 "</td><td>" + data[i].date +
+		 "</td><td><a href='people_list.html' target='_blank'><span class='glyphicon glyphicon-eye-open'></span></a></td></tr>";
+		}
+		return table;
+	}
+	
+
+	
+	
+	function add() {
+	    
+	    var event = {
+				"owner" : "@id",
+        "place" :  $("#place").val(),
+        "date" : $("#date").val(),
+        "level" : $("#level").val(),
+        "sportKind" : $("#sportKind").val(),
+        "tradeText" : $("#tradeText").val()
+	    };
+		
+		$.ajax({
+        type: "POST",
+        //the url where you want to sent the userName and password to
+        url: '/api/events/create',
+        dataType: 'json',
+		data : JSON.stringify(event),
+		contentType:"application/json; charset=utf-8",
+        //async: false,
+        //json object to sent to the authentication url
+        
+        success: function (data) {
+
+            $("#eventsTable").html(generate(data));
+        }
+    });
+		$("#tradeText").val("");
+		$("#date").val("");
+		alert(JSON.stringify(data));
+		return false;
+	
+	
+	}
+	</script>
+  </body>
+</html>
