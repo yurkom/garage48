@@ -46,8 +46,13 @@ import reactivemongo.bson.Producer.nameValue2Producer
     	val level = request.body.\("level").toString().replace("\"", "")
     	val sportKind = request.body.\("sportKind").toString.replace("\"", "")
     	val tradeText = request.body.\("tradeText").toString.replace("\"", "")	
-      val event = Event(Option(BSONObjectID.generate), new BSONObjectID(owner), place, date, level, sportKind, tradeText) // create an event
-    	collection.insert(event).map(_=> Ok(Json.toJson(event))) // return the created event in a JSON
+		val ownerID = new BSONObjectID(owner)
+      val event = Event(Option(BSONObjectID.generate), ownerID, place, date, level, sportKind, tradeText) // create an event
+    	collection.insert(event).flatMap(_=> {
+      val futureUser = collection.find(BSONDocument("owner" -> ownerID)).cursor[Event].toList
+      futureUser.map { events => Ok(Json.toJson(events)) }
+		
+		}) // return the created event in a JSON
     }
   }
 
