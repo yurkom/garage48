@@ -21,6 +21,8 @@ GET     /views/*any                 controllers.Application.loadPublicHTML(any)
 # CRUID Events 
 GET		/api/events 				controllers.Events.index
 POST	/api/events/create 			controllers.Events.create
+POST	/api/events/join 			controllers.Events.join
+GET		/api/events/joined/:id 	    controllers.Events.joined(id: String)
 GET		/api/events/:id 			controllers.Events.show(id: String)
 POST	/api/events/:id 			controllers.Events.update(id: String)
 DELETE  /api/events/:id 			controllers.Events.delete(id: String)

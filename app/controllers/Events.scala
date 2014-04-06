@@ -59,13 +59,46 @@ import reactivemongo.bson.Producer.nameValue2Producer
   /** retrieve the event for the given id as JSON */
   def show(owner: String) = Action(parse.empty) { request =>
     Async {
-      val objectID = new BSONObjectID(owner) // get the corresponding BSONObjectID
+      val ownerID = new BSONObjectID(owner) // get the corresponding BSONObjectID
       // get the event having this id (there will be 0 or 1 result)
-      val futureUser = collection.find(BSONDocument("owner" -> objectID)).cursor[Event].toList
+      val futureUser = collection.find(BSONDocument("owner" ->ownerID)).cursor[Event].toList
       futureUser.map { events => Ok(Json.toJson(events)) }
     }
   }
 
+  
+  
+  /** retrieve the event for the given id as JSON */
+  def join() = Action(parse.json) { request =>
+    Async {
+    	val event = request.body.\("event").toString().replace("\"", "")
+    	val user = request.body.\("user").toString().replace("\"", "")
+  		val eventID = new BSONObjectID(event) // get the correspond 
+		val userId = new BSONObjectID(user)
+  		val modifier = BSONDocument( // create the modifier event
+  			"$addToSet" -> BSONDocument(
+  				"users" -> userId))
+  		collection.update(BSONDocument("_id" -> eventID), modifier).flatMap(_=> {
+      val futureUser = collection.find(BSONDocument("users" -> userId)).cursor[Event].toList
+      futureUser.map { events => Ok(Json.toJson(events)) }
+		
+		}) 
+  	}
+  }
+
+  
+  /** retrieve the event for the given id as JSON */
+  def joined(user: String) = Action(parse.empty) { request =>
+    Async {
+      val userID = new BSONObjectID(user) // get the corresponding BSONObjectID
+      // get the event having this id (there will be 0 or 1 result)
+      val futureUser = collection.find(BSONDocument("users" -> userID)).cursor[Event].toList
+      futureUser.map { events => Ok(Json.toJson(events)) }
+    }
+  }
+
+  
+  
   /** update the event for the given id as JSON */
   def update(id: String) = Action(parse.json) { request =>
   	Async {
