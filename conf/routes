@@ -5,7 +5,9 @@
 # Home page
 GET     /                           controllers.Application.index
 
-GET     /login                      controllers.Application.login
+POST    /enter                      controllers.Users.enter
+POST    /signup                     controllers.Users.signup
+
 GET     /add_event					controllers.Application.add_event
 GET     /main_trainer				controllers.Application.main_trainer
 GET     /people_list				controllers.Application.people_list
@@ -28,15 +30,13 @@ POST	/api/events/:id 			controllers.Events.update(id: String)
 DELETE  /api/events/:id 			controllers.Events.delete(id: String)
 
 # CRUD Users
-POST    /api/enter                  controllers.Users.enter
-POST    /api/signup                 controllers.Users.signup
 GET     /api/users                  controllers.Users.index
 GET     /api/users/:id              controllers.Users.show(id: String)
 POST    /api/users/:id		        controllers.Users.update(id: String)
 DELETE  /api/users/:id		        controllers.Users.delete(id: String)
 
 # Map static resources from the /public folder to the /assets URL path
-GET     /assets/*file               controllers.Assets.at(path="/public", file)
+GET     /css/*file               controllers.Assets.at(path="/public/css", file)
 #GET     /images/*file               controllers.Assets.at(path="/public/images", file)
 
 

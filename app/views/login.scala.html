@@ -1,24 +1,90 @@
-@main("Welcome to Play Framework") {
-	<div class="wrapper">
-		<div class="row">
-			<div class="col-sm-3 col-md-4 col-lg-4">
-			</div>
-			<div class="col-sm-5 col-md-4 col-lg-4">
-				<h2 class="form-signin-heading text-success">Please sign</h2>
-				<form action="api/enter" method="POST">
-				<input type="text" class="form-control" placeholder="Login" name="login" id="login">
-				<input type="password" class="form-control"placeholder="Password" name="password" id="password">
-				<p></p>
-				<button class="btn btn-lg btn-success btn-block" type="submit">Log in</button>
+<!DOCTYPE HTML>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Log In</title>
+    <link href="css/login.css" rel="stylesheet">
+   </head>
+  <body>
+
+	<header>
+		<figure></figure>
+		<div id="logo">
+		</div>
+	</header>
+
+  	<figure class="bcg login"></figure>
+  	<div>
+  		<section id="wrapper">
+			<figure class="bcg"></figure>
+			<section>
+			<figure class="bcg"></figure>
+			<h3>паскуда, тварь!</h3>
+			<p id="pitch">
+				Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+			</p>
+			</section>
+			
+			<section class="form reg_theme good_pas">
+				<figure class="bcg"></figure>
+				<div>
+<!-- LOGIN PARAMS -->
+				<form id="log" method="POST" action="enter">
+					<h5 class="login_param">Please sign</h5>
+					<input class="login_param" type="text" id="login" name="login" placeholder="Login" required autofocus>
+					<input class="login_param" type="password" id="password" name="password" placeholder="Password" required>
+					<button class="login_param" type="submit">
+						Log in
+					</button>
+					<a href="#" class="login_param">Sign in</a>
 				</form>
-				<br/>
-				<p><a href="registration">Sign Up</a></p>
-				<br/>
-				<div class="alert alert-danger hidden" id="no_user">Error login or password.</div>
-				<img src="@routes.Assets.at("images/sports.jpg")"alt="sport_img" class="img-responsive center-block ">
-			</div>
-			<div class="col-sm-3 col-md-4 col-l-4">
-			</div>
-		 </div>
-	</div>
-}
+<!-- REGISTRATION -->
+					<h5 class="reg_params">Registration</h5>
+				<form id="reg" method="POST" action="signup">
+					<div id="checker">	
+						<div class="radio reg_params">	
+							<input type="radio" name="role" value="trainer">
+	   						<span>
+	   							Trainer
+	   						</span>
+						</div>
+
+	   					<div class="radio reg_params">	
+	   						<input type="radio" name="role" value="user">
+	   						<span>
+	   							Athlet
+	   						</span>
+	   					</div>
+	   				</div>
+
+					<input class="reg_params" type="text" placeholder="Login" name="login">
+					<input class="reg_params" type="password" placeholder="Password" name="password" required>
+					<input class="reg_params" type="email" placeholder="e-mail" name="email" required>
+					<input id="mobile" type="number" placeholder="Mobile Phone" name="phone"></input>
+					<textarea class="reg_params" id="TextArea" placeholder="Description" name="descr"></textarea>
+
+					<button class="reg_param" type="submit">
+						Sign in
+					</button>
+	   				</form>
+					<div id="no_user" class="hidden">
+						<span>
+							Error login or password.
+						</span>
+					</div>
+				</div>
+			</section>
+</section>
+</div> <!-- DON'T TOUCH -->
+<footer>
+	<figure class="bcg"></figure>
+	<section>
+		Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+	</section>
+</footer>
+</body>
+</html>
