@@ -33,15 +33,17 @@
   			</p>
   			<div>
   			</div>
-  			<button>
+			
+  			<a href="\">
   					Log out
-  			</button>
+  			</a>
+			
   		</div>
   	</section>
 
 	<section id="trainer_table">
 			<div>
-				<h5>Youre events</h5>
+				<h5>Your events</h5>
 				<table  id="eventsTable">
 					 <tr>
 						<th>
@@ -82,16 +84,19 @@
 			<figure class="bcg" id="create_event_bcg"></figure>
 			<h5>Event details</h5>
 			<div>
-				<div class="bcg"></div>
+				<figure class="bcg"></figure>
 				<input type="text" class="form-control" id="place" placeholder="Place">
 				<input type="text" class="form-control datepicker" id="date" placeholder="Date">
-				<b>Kind of sport:</b>
+				<div>Kind of sport:</div>
+				<figure class="bla_wrapper">&#709;</figure>
 				<select class="form-control" id="sportKind">
 					<option value="football">Football</option>
 					<option value="basketball">Basketball</option>
 					<option value="fitness">Fitness</option>	
 				</select></br>												
-				<b>Skill level:</b>
+
+				<div>Skill level:</div>
+				<figure class="bla_wrapper">&#709;</figure>
 				<select class="form-control" id="level">
 					<option value="football">Beginner</option>
 					<option value="basketball">Middle</option>		
@@ -99,7 +104,6 @@
 				</select></br>
 				<textarea class="form-control" id="tradeText" placeholder="Description"></textarea></br>
 				<button id="create_post" type="submit" onclick="add();" value="Create Event">Create event</button>
-				<span id="close_newpost_bnt">close</span>
 			</div>
 		</div>	
 	</section>
