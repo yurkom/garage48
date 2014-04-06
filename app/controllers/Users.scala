@@ -35,7 +35,7 @@ object Users extends Controller with MongoController {
       // get the user having this login/password (there will be 0 or 1 result)
       val futureUser = collection.find(BSONDocument("login" -> login, "password" -> password)).one[User]
       futureUser.map { user => user match {
-	    case None => Redirect("/")
+	    case None => Ok(views.html.login("Error login or password."))
 		case Some(res) if (res.role == "user") => Ok(views.html.my_events())
 		case Some(res) if (res.role == "trainer") => Ok(views.html.main_trainer())
 	    case _ => Redirect("/")

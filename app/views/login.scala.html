@@ -1,3 +1,5 @@
+@(error: String = "")
+
 <!DOCTYPE HTML>
 <html lang="en">
   <head>
@@ -23,7 +25,7 @@
 			<figure class="bcg"></figure>
 			<section>
 			<figure class="bcg"></figure>
-			<h3>паскуда, тварь!</h3>
+			<h3>Urban sport entry point</h3>
 			<p id="pitch">
 				Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
 			</p>
@@ -34,17 +36,18 @@
 				<div>
 <!-- LOGIN PARAMS -->
 				<form id="log" method="POST" action="enter">
+				    @error
 					<h5 class="login_param">Please sign</h5>
 					<input class="login_param" type="text" id="login" name="login" placeholder="Login" required autofocus>
 					<input class="login_param" type="password" id="password" name="password" placeholder="Password" required>
 					<button class="login_param" type="submit">
 						Log in
 					</button>
-					<a href="#" class="login_param">Sign in</a>
+					<span id="toreg" class="login_param">Sign in</span>
 				</form>
 <!-- REGISTRATION -->
-					<h5 class="reg_params">Registration</h5>
 				<form id="reg" method="POST" action="signup">
+					<h5 class="reg_params">Registration</h5>
 					<div id="checker">	
 						<div class="radio reg_params">	
 							<input type="radio" name="role" value="trainer">
@@ -67,7 +70,7 @@
 					<input id="mobile" type="number" placeholder="Mobile Phone" name="phone"></input>
 					<textarea class="reg_params" id="TextArea" placeholder="Description" name="descr"></textarea>
 
-					<button class="reg_param" type="submit">
+					<button class="reg_param" id="sign_in_but" type="submit">
 						Sign in
 					</button>
 	   				</form>
@@ -86,5 +89,14 @@
 		Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
 	</section>
 </footer>
+	<script src="js/jQuery.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('#toreg').click(function(){
+				$('#log').css({'display':'none','opacity':'0'});
+				$('#reg').css({'display':'block','opacity':'1'});
+			});
+		});
+	</script>
 </body>
 </html>

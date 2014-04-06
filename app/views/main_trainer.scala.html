@@ -1,9 +1,38 @@
 @main("Welcome to Play Framework") {
 
+	    <script type="text/javascript">
+		alert('$');
+		function load(){
+	 $.ajax({
+        type: "GET",
+        //the url where you want to sent the userName and password to
+        url: '/api/events/53405eb12a73f75701912c7d',
+        dataType: 'json',
+        contentType:"application/json; charset=utf-8",
+        //async: false,
+        //json object to sent to the authentication url
+        data: JSON.stringify({ 
+ "owner" : "534062262a73f75f01912c7e",
+        "place" : "Kiev",
+        "date" : "17-08-2015",
+        "level" : "medium",
+        "sportKind" : "golf",
+        "tradeText" : "trade text 2"
+  }),
+        success: function (data) {
+       
+        alert("Thanks!"); 
+        }
+    });
+	}
+	alert('$');
+	//load();
+
+	</script>
 	<div class="wrapper">
 		<div class="container">
 		<div class="page-header">
-			<h1 class="text-success"><img style='display: inline-block;' src="@routes.Assets.at("images/voleyball.jpg")" alt="volleyball_img" class="img-responsive center-block "> Your events</h1>
+			<h1 class="text-success"><img style='display: inline-block;' src="images/voleyball.jpg" alt="volleyball_img" class="img-responsive center-block "> Your events</h1>
 		  </div>
 	
 		  
@@ -19,6 +48,8 @@
 			</form>		
 		</div>
 	</div>
+
+
 	
 }	
 	
