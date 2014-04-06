@@ -40,23 +40,24 @@ import reactivemongo.bson.Producer.nameValue2Producer
   def create() = Action(parse.json) { request =>
     Async {
 
+    	val owner = request.body.\("owner").toString().replace("\"", "")
     	val place = request.body.\("place").toString().replace("\"", "")
     	val date = request.body.\("date").toString().replace("\"", "")
     	val level = request.body.\("level").toString().replace("\"", "")
     	val sportKind = request.body.\("sportKind").toString.replace("\"", "")
     	val tradeText = request.body.\("tradeText").toString.replace("\"", "")	
-      val event = Event(Option(BSONObjectID.generate), place, date, level, sportKind, tradeText) // create an event
+      val event = Event(Option(BSONObjectID.generate), new BSONObjectID(owner), place, date, level, sportKind, tradeText) // create an event
     	collection.insert(event).map(_=> Ok(Json.toJson(event))) // return the created event in a JSON
     }
   }
 
   /** retrieve the event for the given id as JSON */
-  def show(id: String) = Action(parse.empty) { request =>
+  def show(owner: String) = Action(parse.empty) { request =>
     Async {
-      val objectID = new BSONObjectID(id) // get the corresponding BSONObjectID
+      val objectID = new BSONObjectID(owner) // get the corresponding BSONObjectID
       // get the event having this id (there will be 0 or 1 result)
-      val futureUser = collection.find(BSONDocument("_id" -> objectID)).one[Event]
-      futureUser.map { event => Ok(Json.toJson(event)) }
+      val futureUser = collection.find(BSONDocument("owner" -> objectID)).cursor[Event].toList
+      futureUser.map { events => Ok(Json.toJson(events)) }
     }
   }
 
@@ -64,6 +65,7 @@ import reactivemongo.bson.Producer.nameValue2Producer
   def update(id: String) = Action(parse.json) { request =>
   	Async {
   		val objectID = new BSONObjectID(id) // get the correspond 
+    	val owner = request.body.\("owner").toString().replace("\"", "")
   		val place = request.body.\("place").toString().replace("\"", "")
   		val date = request.body.\("date").toString().replace("\"", "")
   		val level = request.body.\("level").toString().replace("\"", "")
@@ -77,7 +79,7 @@ import reactivemongo.bson.Producer.nameValue2Producer
   				"sportKind" -> sportKind,
   				"tradeText" -> tradeText))
   		collection.update(BSONDocument("_id" -> objectID), modifier).map(
-  			_=> Ok(Json.toJson(Event(Option(objectID), place, date, level, sportKind, tradeText))) // return the modified event in a JSON
+  			_=> Ok(Json.toJson(Event(Option(objectID), new BSONObjectID(owner), place, date, level, sportKind, tradeText))) // return the modified event in a JSON
   			) 
   	}
   }

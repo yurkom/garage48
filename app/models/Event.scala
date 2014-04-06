@@ -16,7 +16,7 @@ import play.modules.reactivemongo.json.BSONFormats.BSONObjectIDFormat
 * Author Andrei Ruban
 */
 
-case class Event(id: Option[BSONObjectID], place: String, date: String, level: String, sportKind: String, tradeText: String)
+case class Event(id: Option[BSONObjectID], owner: BSONObjectID, place: String, date: String, level: String, sportKind: String, tradeText: String)
 
 object Event {
 	 /** serialize/Deserialize an Event into/from JSON value */
@@ -26,6 +26,7 @@ object Event {
   implicit object EventBSONWriter extends BSONDocumentWriter[Event] {
   		def write(event: Event) : BSONDocument = BSONDocument (
 		"_id" -> event.id.getOrElse(BSONObjectID.generate),
+		"owner" -> event.owner,
         "place" -> event.place,
         "date" -> event.date,
         "level" -> event.level,
@@ -38,6 +39,7 @@ object Event {
     def read(doc: BSONDocument): Event =
       Event(
         doc.getAs[BSONObjectID]("_id"),
+		doc.getAs[BSONObjectID]("owner").get,
         doc.getAs[String]("place").get,
         doc.getAs[String]("date").get,
         doc.getAs[String]("level").get,
