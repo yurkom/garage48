@@ -18,7 +18,12 @@ ul {list-style: none;}
     background: #d64040;
     color: #fff;
 }
-body, html {
+html {
+	margin: 0;
+	padding: 0;
+	height: 100%;
+}
+body {
 	padding: 0;
 	margin: 0;
 	min-width: 100%;
@@ -34,7 +39,6 @@ body > .bcg {
 	height: 100%;
 	top: 0;
 	left: 0;
-	background: url(mamba.jpg) no-repeat center fixed;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
@@ -42,7 +46,9 @@ body > .bcg {
 	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='backgrounds/1.jpg', sizingMethod='scale');
 	-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='backgrounds/1.jpg', sizingMethod='scale')";
 }
-
+#login_bcg {
+	background: url(mamba.jpg) no-repeat center fixed;
+}
 body {
     font-family: Arial, Helvetica, sans-serif;
     font-weight: normal;
@@ -141,6 +147,13 @@ header > figure {
   	-o-transform: skewY(-2deg);
   	-ms-transform: skewY(-2deg);
   	transform: skewY(-2deg);
+}
+header > h5 {
+	position: absolute;
+	top: -7px;
+	left: 120px;
+	display: inline-block;
+	color: #1AE5C6;
 }
 @media (max-width:767px) {
 header {
@@ -536,4 +549,249 @@ footer > .bcg {
 	footer > section {
 		margin: 0 25px 0 25px;
 	}
+}
+
+/* PROFILE */
+	body > div {
+		min-height: 100%;
+	}
+  	#profile {
+  		min-width: 840px; /* !!!!!! */
+  		margin-top: 70px;
+  		position: relative;
+  		height: 260px;
+  		background-color: rgba(0,0,0,0.35);
+  		-webkit-transform: skewY(-2deg);
+  		-moz-transform: skewY(-2deg);
+  		-o-transform: skewY(-2deg);
+  		-ms-transform: skewY(-2deg);
+	  	transform: skewY(-2deg);
+  	}
+  	#profile > .bcg {
+  		display: block;
+  		width: 100%;
+  		height: 100%;
+  		position: absolute;
+  		top: 0;
+  		left: 0;
+  		background-color: rgba(255,255,255,1);
+  	}
+  	#profile > div {
+  		position: relative;
+  		text-align: center;
+  		width: 100%;
+  	}
+  	#profile_bcg {
+  		display: block;
+  		position: absolute;
+  		width: 100%;
+  		height: 100%;
+  		top: 0;
+  		left: 0;
+  		background-color: #222;
+  	}
+  	#ava {
+  		display: block;
+  		position: absolute;
+  		width: 200px;
+  		height: 100%;
+  		top: 0;
+  		left: 0;
+  		background-color: #aaa;
+  		z-index: 4
+  	}
+  	.profile_des {
+  		color: #222;
+  		margin-top: 75px;
+  		display: inline-block;
+  		text-align: left;
+  		max-width: 420px;
+  	}
+  	#profile > div > button {
+  		display: block;
+  		position: absolute;
+  		right: 40px;
+  		top: 60px;
+  	}
+  	#profile button {
+	cursor: pointer;
+	font-weight: 700;
+	border: none;
+	margin-right: 2px;
+	background-color: rgba(26, 178, 109,0);
+	font-size: 18px;
+	border-radius: 6px;
+	color: #1AE5C6;
+	margin-top: 9px;
+	height: 60px;
+	float: left;
+	-moz-transition: all 0.3s;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+    -webkit-transform: skewY(2deg);
+  	-moz-transform: skewY(2deg);
+  	-o-transform: skewY(2deg);
+  	-ms-transform: skewY(2deg);
+	transform: skewY(2deg);
+	}
+	#profile button:hover {
+		border: 2px solid #1AE5C6;
+		color: #fff;
+		background-color: rgba(26, 229, 198,0.36);
+	}
+	.train {
+		background: url(train.png) no-repeat center;
+		-webkit-background-size: cover;
+		-moz-background-size: cover;
+		-o-background-size: cover;
+		background-size: cover;
+		filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='backgrounds/1.jpg', sizingMethod='scale');
+		-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='backgrounds/1.jpg', sizingMethod='scale')";
+	}
+
+/* TRAINER TABLE */
+#trainer_table {
+	padding-bottom: 32px;
+	display: inline-block;
+	width: 100%;
+	min-height: 400px;
+	text-align: center;
+}
+#trainer_table > div {
+	display: inline-block;
+	width: 560px;
+}
+#trainer_table h5 {
+	text-align: left;
+	color: #1AE5C6;
+	margin-left: 25px;
+}
+#trainer_table table {
+	padding-top: 15px;
+	display: inline-block;
+	width: 100%;
+}
+#trainer_table th {
+	color: #fff;
+}
+#trainer_table td {
+	width: 112px;
+	text-align: left;
+}
+  	#trainer_table > div > button {
+	width: 100%;
+	cursor: pointer;
+	font-weight: 700;
+	border: 2px solid #1AE5C6;
+	margin-right: 2px;
+	background-color: rgba(26, 178, 109,0);
+	font-size: 18px;
+	border-radius: 6px;
+	color: #1AE5C6;
+	margin-top: 9px;
+	height: 32px;
+	float: left;
+	-moz-transition: all 0.3s;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+	}
+	#trainer_table > div > button:hover {
+		color: #fff;
+		background-color: rgba(26, 229, 198,0.36);
+	}
+#trainer_table th {
+	border-bottom: 1px solid #aaa;
+}
+#trainer_table tr {
+	width: 100%;
+	margin-top: 2px;
+	height: 32px;
+}
+#trainer_table tr:nth-child(1) {
+	height: 36px;
+}
+
+/* CREATE EVENT */
+#create_event {
+	display: block;
+	position: relative;
+	z-index: 10;
+	text-align: center;
+}
+#create_event h5 {
+	color: #fff;
+}
+#create_event > div {
+	display: inline-block;
+	width: 100%;
+	height: 400px;
+	border-radius: 6px;
+	margin-bottom: 15px;
+	position: relative;
+}
+#create_event_bcg {
+	background-color: rgba(194, 50, 255,0.65);
+	display: block;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+  	-webkit-transform: skewY(-2deg);
+  	-moz-transform: skewY(-2deg);
+  	-o-transform: skewY(-2deg);
+  	-ms-transform: skewY(-2deg);
+  	transform: skewY(-2deg);
+}
+#create_event > div > div {
+	text-align: left;
+	display: inline-block;
+	position: relative;
+	width: 520px;
+	background-color: rgba(0,0,0,0.15);
+}
+#create_event input {
+	display: block;
+}
+
+#create_event input {
+	position: relative;
+	background-color: rgba(255,255,255,0.36);
+	border-radius: 7px;
+	color: #fff;
+	font-size: 18px;
+	height: 32px;
+	margin-top: 9px;
+	border: none;
+}
+#create_event textarea {
+	resize: none;
+	position: relative;
+	background-color: rgba(255,255,255,0.36);
+	border-radius: 7px;
+	color: #fff;
+	font-size: 18px;
+	height: 32px;
+	margin-top: 9px;
+	border: none;
+	height: 160px;
+}
+#create_event button {
+	cursor: pointer;
+	font-weight: 700;
+	background-color: rgba(26, 178, 109,0);
+	font-size: 18px;
+	border-radius: 6px;
+	color: #fff;
+	border: 2px solid #1AE5C6;
+	margin-top: 9px;
+	height: 32px;
+	float: left;
+	-moz-transition: all 0.3s;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+}
+.form button:hover {
+	color: #fff;
+	background-color: rgba(26, 229, 198,0.36);
 }

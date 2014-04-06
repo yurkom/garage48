@@ -37,7 +37,7 @@ object Users extends Controller with MongoController {
       futureUser.map { user => user match {
 	    case None => Ok(views.html.login("Error login or password."))
 		case Some(res) if (res.role == "user") => Ok(views.html.my_events())
-		case Some(res) if (res.role == "trainer") => Ok(views.html.main_trainer())
+		case Some(res) if (res.role == "trainer") => Ok(views.html.trainer(res.id.get.stringify))
 	    case _ => Redirect("/")
 	  } }
     }
