@@ -56,7 +56,7 @@ object Users extends Controller with MongoController {
       collection.insert(user).map(
         _ => {
 		    if (role == "user") Ok(views.html.my_events())
-			else if (role == "trainer") Ok(views.html.main_trainer())
+			else if (role == "trainer") Ok(views.html.trainer(user.id.get.stringify))
 			else Redirect("/")
 		}) // return the created user in a JSON
     }
